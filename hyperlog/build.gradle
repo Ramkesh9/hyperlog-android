@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+//apply plugin: 'maven'
+apply plugin: 'maven-publish'
+//apply plugin: 'com.github.dcendents.android-maven'
+
 
 ext {
     bintrayRepo = 'maven'
@@ -47,17 +50,24 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.android.volley:volley:1.0.0'
-    compile 'com.google.code.gson:gson:2.8.1'
-    testCompile 'junit:junit:4.12'
+//    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    implementation 'com.android.volley:volley:1.0.0'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    testImplementation 'junit:junit:4.12'
 }
 
 def computeVersionName() {
@@ -91,7 +101,7 @@ def computeVersionName() {
     }
 }
 
-if (project.rootProject.file('local.properties').exists()) {
+/*if (project.rootProject.file('local.properties').exists()) {
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
-}
+}*/

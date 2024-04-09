@@ -25,9 +25,10 @@ SOFTWARE.
 package com.hypertrack.hyperlog;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
